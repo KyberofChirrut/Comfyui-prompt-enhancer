@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.env
+*.local.json
+test-results/
+.venv/
+node_modules/
+dist/
+.agents/
+.codex/
+*.log
+SKILL.md
+fisher-moss-*.md
+MOSS-Image-*.md

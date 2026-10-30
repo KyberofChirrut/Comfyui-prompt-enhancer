@@ -1,0 +1,3 @@
+# ComfyUI normally already supplies these. No OpenAI SDK or extra model weights needed.
+numpy>=1.24
+Pillow>=10.0

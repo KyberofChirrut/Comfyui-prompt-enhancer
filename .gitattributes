@@ -1,0 +1,3 @@
+# Keep approved preset bytes stable across Windows/Linux checkouts.
+templates/presets/*.md -text
+docs/presets/*-production-v1.md -text
