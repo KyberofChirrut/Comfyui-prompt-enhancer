@@ -1,0 +1,16 @@
+{
+  "node_version": "0.3.5",
+  "note": "Only these approved production presets are loaded at runtime. Task adaptations are visible in the template editor.",
+  "presets": {
+    "generation": {
+      "file": "templates/presets/generation.md",
+      "approved_baseline": "docs/presets/generation-production-v1.md",
+      "sha256": "3e710585be84eab07ef6c3859867d6a0f7b62c04807c5b606f89db8bba43138a"
+    },
+    "editing": {
+      "file": "templates/presets/editing.md",
+      "approved_baseline": "docs/presets/editing-production-v1.md",
+      "sha256": "a075d9596b72c7b7b7c834a4ffd7b920dcfb41422b43b13788aa2e21d91ede3f"
+    }
+  }
+}
