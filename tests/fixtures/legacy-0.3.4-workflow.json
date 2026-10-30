@@ -1,0 +1,523 @@
+{
+  "id": "c65cabfe-8fc6-510c-be85-32f271aa27e8",
+  "revision": 0,
+  "last_node_id": 6,
+  "last_link_id": 5,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "0c775424-008a-562a-a8a0-ed23708d761d",
+      "title": "FISHER MOSS · 生图配置",
+      "pos": [
+        30,
+        30
+      ],
+      "size": [
+        310,
+        90
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "config",
+          "type": "FISHER_MOSS_CONFIG",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": []
+    },
+    {
+      "id": 2,
+      "type": "FisherMossTextInput",
+      "pos": [
+        30,
+        190
+      ],
+      "size": [
+        440,
+        260
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FisherMossTextInput"
+      },
+      "widgets_values": [
+        "云海中的东方天宫，一位行者站在巨柱旁，构图庄严而清寂。"
+      ],
+      "title": "用户需求（反推可留空）"
+    },
+    {
+      "id": 3,
+      "type": "prompt-generation-production",
+      "pos": [
+        520,
+        30
+      ],
+      "size": [
+        340,
+        200
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "FISHER_MOSS_CONFIG",
+          "link": 1
+        },
+        {
+          "name": "user_text",
+          "type": "STRING",
+          "link": 2
+        },
+        {
+          "name": "must_keep",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            3
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "info",
+          "type": "STRING",
+          "links": [
+            5
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "prompt-generation-production"
+      },
+      "widgets_values": [
+        "创作扩写",
+        "详细",
+        "标准"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "FisherMossPromptEditor",
+      "pos": [
+        960,
+        30
+      ],
+      "size": [
+        620,
+        680
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "STRING",
+          "link": 3
+        },
+        {
+          "name": "addition",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            4
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FisherMossPromptEditor",
+        "fisherMossSource": "保存的生成原稿"
+      },
+      "widgets_values": [
+        "完整编辑",
+        "用户保存的手动正文"
+      ],
+      "title": "先生成原稿，载入后手改，再运行下游"
+    },
+    {
+      "id": 5,
+      "type": "FisherMossPreview",
+      "pos": [
+        1660,
+        30
+      ],
+      "size": [
+        600,
+        760
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FisherMossPreview"
+      },
+      "widgets_values": [],
+      "title": "最终提示词"
+    },
+    {
+      "id": 6,
+      "type": "FisherMossPreview",
+      "pos": [
+        960,
+        930
+      ],
+      "size": [
+        640,
+        300
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FisherMossPreview"
+      },
+      "widgets_values": [],
+      "title": "运行信息（不是模型思考过程）"
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      3,
+      0,
+      "FISHER_MOSS_CONFIG"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      1,
+      "STRING"
+    ],
+    [
+      3,
+      3,
+      0,
+      4,
+      0,
+      "STRING"
+    ],
+    [
+      4,
+      4,
+      0,
+      5,
+      0,
+      "STRING"
+    ],
+    [
+      5,
+      3,
+      1,
+      6,
+      0,
+      "STRING"
+    ]
+  ],
+  "definitions": {
+    "subgraphs": [
+      {
+        "id": "0c775424-008a-562a-a8a0-ed23708d761d",
+        "version": 1,
+        "revision": 0,
+        "name": "FISHER MOSS · 生图配置",
+        "state": {
+          "lastGroupId": 0,
+          "lastNodeId": 3,
+          "lastLinkId": 3,
+          "lastRerouteId": 0
+        },
+        "config": {},
+        "inputNode": {
+          "id": -10,
+          "bounding": [
+            0,
+            100,
+            120,
+            60
+          ]
+        },
+        "outputNode": {
+          "id": -20,
+          "bounding": [
+            1640,
+            100,
+            150,
+            80
+          ]
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "dadb5e6e-2283-56a4-9115-b7359a42b98e",
+            "name": "config",
+            "type": "FISHER_MOSS_CONFIG",
+            "linkIds": [
+              3
+            ]
+          }
+        ],
+        "widgets": [],
+        "nodes": [
+          {
+            "id": 1,
+            "type": "FisherMossService",
+            "pos": [
+              100,
+              100
+            ],
+            "size": [
+              340,
+              480
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+              {
+                "name": "service",
+                "type": "FISHER_MOSS_SERVICE",
+                "links": [
+                  1
+                ],
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "FisherMossService"
+            },
+            "widgets_values": [
+              "local",
+              "http://127.0.0.1:8000/v1",
+              "",
+              "auto",
+              "",
+              4096,
+              300,
+              1536,
+              false,
+              0.6,
+              "{}"
+            ],
+            "title": "LLM 服务：填写模型和地址"
+          },
+          {
+            "id": 2,
+            "type": "FisherMossTemplate",
+            "pos": [
+              500,
+              100
+            ],
+            "size": [
+              620,
+              800
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+              {
+                "name": "template",
+                "type": "FISHER_MOSS_TEMPLATE",
+                "links": [
+                  2
+                ],
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "FisherMossTemplate",
+              "fisherMossTemplateState": {
+                "active": "generation",
+                "drafts": {
+                  "generation": {
+                    "text": "保存的生图手稿",
+                    "task_rules": "保存的生图适配"
+                  },
+                  "editing": {
+                    "text": "保存的编辑手稿",
+                    "task_rules": "保存的编辑适配"
+                  }
+                }
+              }
+            },
+            "widgets_values": [
+              "generation",
+              "保存的生图手稿",
+              "保存的生图适配"
+            ],
+            "title": "完整模板：可直接查看和修改"
+          },
+          {
+            "id": 3,
+            "type": "FisherMossConfig",
+            "pos": [
+              1220,
+              100
+            ],
+            "size": [
+              340,
+              230
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "service",
+                "type": "FISHER_MOSS_SERVICE",
+                "link": 1
+              },
+              {
+                "name": "template",
+                "type": "FISHER_MOSS_TEMPLATE",
+                "link": 2
+              },
+              {
+                "name": "target_width",
+                "type": "INT",
+                "link": null
+              },
+              {
+                "name": "target_height",
+                "type": "INT",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "config",
+                "type": "FISHER_MOSS_CONFIG",
+                "links": [
+                  3
+                ],
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "FisherMossConfig"
+            },
+            "widgets_values": [
+              "en",
+              "prefer_input",
+              0
+            ],
+            "title": "输出语言／高级设置"
+          }
+        ],
+        "groups": [],
+        "links": [
+          {
+            "id": 1,
+            "origin_id": 1,
+            "origin_slot": 0,
+            "target_id": 3,
+            "target_slot": 0,
+            "type": "FISHER_MOSS_SERVICE"
+          },
+          {
+            "id": 2,
+            "origin_id": 2,
+            "origin_slot": 0,
+            "target_id": 3,
+            "target_slot": 1,
+            "type": "FISHER_MOSS_TEMPLATE"
+          },
+          {
+            "id": 3,
+            "origin_id": 3,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 0,
+            "type": "FISHER_MOSS_CONFIG"
+          }
+        ],
+        "extra": {}
+      }
+    ]
+  },
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.65,
+      "offset": [
+        20,
+        20
+      ]
+    },
+    "frontendVersion": "1.24.3"
+  },
+  "version": 0.4
+}
